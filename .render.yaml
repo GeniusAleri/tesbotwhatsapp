@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: wa-bot-web
+    runtime: node
+    repo: https://github.com/GeniusAleri/tesbotwhatsapp
+    buildCommand: npm install
+    startCommand: node index.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+    plan: free
+
+  - type: worker
+    name: wa-bot-worker
+    runtime: node
+    repo: https://github.com/GeniusAleri/tesbotwhatsapp
+    buildCommand: npm install
+    startCommand: node sendMessages.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+    plan: free
